@@ -1,0 +1,63 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner iter = new Scanner(System.in);
+        int numIter = iter.nextInt();
+        
+        for(int i = 0 ; i <= numIter; i++){
+            String num = iter.nextLine();
+            String[] arrayNum = num.split("\\s+");
+            if(num != null && !num.isEmpty()){
+                sol(Integer.parseInt(arrayNum[0]), Integer.parseInt(arrayNum[1]),Integer.parseInt(arrayNum[2]));
+                //System.out.println("arrayNum[0] = " + arrayNum[0] + " arrayNum[1]" + arrayNum[1] +" arrayNum[0]" + arrayNum[2]);
+            }
+             
+        }
+        
+    }
+                  
+            public static void sol(int a, int b, int c){
+                String state;
+                //if(b > a){int d = a; a = b; b = d;}
+                //else if (b == a && a != c){ }
+                //System.out.println("a = " + a);
+                //System.out.println("b = " + b);
+                //System.out.println("c = " + c);
+                int d = highestNum(a, b, 0, c);
+                     
+                if(d != -1){
+                    state = "YES";
+                }
+                else{
+                    state = "NO";
+                }
+                System.out.println(state);
+            }
+    
+            public static int highestNum(int maxF, int maxS, int value, int c){
+               
+               int l = maxS - value;
+               int h = maxF % l;
+                
+                if(h == c){System.out.println(" FIRST ");
+                    return h;}
+                else{ 
+                    System.out.println(" THIRD ");
+                    System.out.println("highestNum(" + maxF+ "," + maxS + "," + h + "," +c + ")");
+                    return highestNum(maxF,maxS,h,c);
+                }
+                
+            }
+    
+                
+                
+                   
+                
+}
